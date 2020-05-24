@@ -1,7 +1,9 @@
 class EnemyAttack {
 
     private shot: HTMLDivElement = document.createElement("div");
+    private core: HTMLDivElement = <HTMLDivElement>document.getElementById("core");
     private loop: boolean = true;
+    private score: boolean = false;
     private speed: any;
     private position: any;
 
@@ -24,6 +26,27 @@ class EnemyAttack {
         this.loop = false;
     }
 
+    private hit(): void {
+
+        let left: number = this.core.parentElement.offsetLeft;
+        let top: number = this.core.parentElement.offsetTop;
+        let width: number = this.core.offsetWidth;
+        let height: number = this.core.offsetHeight;
+        if (this.position.x < (left + width) && this.position.x > (left) && this.position.y > (top - height / 2) && this.position.y < (top + height / 2)) {
+            let counter: number = this.core.parentNode.children.length;
+            if (counter > 1) {
+
+                this.core.parentNode.children[(counter - 1)].remove();
+                this.score = true;
+                console.log(this.core.parentNode.children);
+            } else {
+                alert("game over");
+                location.reload();
+            }
+        }
+
+    }
+
     private move(): void {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
@@ -35,6 +58,8 @@ class EnemyAttack {
 
         if (this.loop) {
             this.move();
+            if (!this.score)
+                this.hit();
 
             requestAnimationFrame(() => this.update());
         }

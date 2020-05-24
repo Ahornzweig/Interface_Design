@@ -2,7 +2,9 @@
 class EnemyAttack {
     constructor(_speed, game, enemy) {
         this.shot = document.createElement("div");
+        this.core = document.getElementById("core");
         this.loop = true;
+        this.score = false;
         this.del = () => {
             this.shot.remove();
             this.loop = false;
@@ -17,6 +19,24 @@ class EnemyAttack {
         requestAnimationFrame(() => this.update());
         setTimeout(this.del, 5000);
     }
+    hit() {
+        let left = this.core.parentElement.offsetLeft;
+        let top = this.core.parentElement.offsetTop;
+        let width = this.core.offsetWidth;
+        let height = this.core.offsetHeight;
+        if (this.position.x < (left + width) && this.position.x > (left) && this.position.y > (top - height / 2) && this.position.y < (top + height / 2)) {
+            let counter = this.core.parentNode.children.length;
+            if (counter > 1) {
+                this.core.parentNode.children[(counter - 1)].remove();
+                this.score = true;
+                console.log(this.core.parentNode.children);
+            }
+            else {
+                alert("game over");
+                location.reload();
+            }
+        }
+    }
     move() {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
@@ -26,6 +46,8 @@ class EnemyAttack {
     update() {
         if (this.loop) {
             this.move();
+            if (!this.score)
+                this.hit();
             requestAnimationFrame(() => this.update());
         }
     }
