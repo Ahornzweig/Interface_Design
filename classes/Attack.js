@@ -25,8 +25,12 @@ class Attack {
         let width = this.target.offsetWidth;
         let height = this.target.offsetHeight;
         if (this.position.x < (left + width / 2) && this.position.x > (left - width / 2) && this.position.y > (top + height) && this.position.y < (top + 2 * height)) {
-            this.target.style.width = (width - 10) + "px";
+            this.target.style.width = (width - 40) + "px";
             this.score = true;
+            if (width - 40 == 0) {
+                alert("You won?");
+                location.reload();
+            }
         }
     }
     move() {

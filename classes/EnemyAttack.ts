@@ -38,7 +38,7 @@ class EnemyAttack {
 
                 this.core.parentNode.children[(counter - 1)].remove();
                 this.score = true;
-                console.log(this.core.parentNode.children);
+               
             } else {
                 alert("game over");
                 location.reload();

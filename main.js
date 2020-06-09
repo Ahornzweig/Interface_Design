@@ -13,6 +13,8 @@ function main() {
     player = document.getElementById("player");
     boss = document.getElementById("boss");
 
+    console.log(boss.getBoundingClientRect(),boss.offsetLeft)
+
     window.addEventListener('mousemove', function (e) {
 
         let left = (e.pageX - (player.offsetWidth / 2)) + "px";
@@ -48,26 +50,29 @@ function shoot(event) {
     let shot = new Attack(event, game);
 }
 
-let position = 0
+let position = 20
 let moveRight = false
 function update() {
-    if (position < -50) {
+
+    if ( moveRight) {
+        position += 0.25;
+        boss.style.left = (boss.getBoundingClientRect().x + boss.getBoundingClientRect().width/2) + position+"px";
+    }
+
+    if (!moveRight) {
+        position -= 0.25;
+        boss.style.left = (boss.getBoundingClientRect().x + boss.getBoundingClientRect().width/2) + position+"px";
+    }
+
+    if (position < -20) {
         moveRight = true;
     }
 
-    if (position > 50) {
+    if (position > 20) {
         moveRight = false;
     }
 
-    if (position < 51 && moveRight) {
-        position += 1;
-        boss.style.left = boss.offsetLeft - 1;
-    }
-
-    if (position > -51 && !moveRight) {
-        position -= 1;
-        boss.style.left = boss.offsetLeft - 1;
-    }
+    window.requestAnimationFrame(update);
 
 }
 
