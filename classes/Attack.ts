@@ -19,7 +19,6 @@ class Attack {
         setTimeout(this.del, 5000);
     }
 
-
     del = () => {
         this.shot.remove();
         this.loop = false;

@@ -3,6 +3,7 @@ let player;
 let shots = [];
 let left;
 let right;
+let boss;
 
 function main() {
 
@@ -10,6 +11,7 @@ function main() {
     left = document.getElementById("left");
     right = document.getElementById("right");
     player = document.getElementById("player");
+    boss = document.getElementById("boss");
 
     window.addEventListener('mousemove', function (e) {
 
@@ -24,19 +26,48 @@ function main() {
     document.addEventListener("click", shoot)
 
     setInterval(attackPlayer, 2000)
+
+    window.requestAnimationFrame(update);
 }
 
 function attackPlayer() {
-    new EnemyAttack([-5, -.3], game, right);
-    new EnemyAttack([5, .1], game, left);
-    new EnemyAttack([-5, -2], game, right);
-    new EnemyAttack([4, -3], game, left);
-    new EnemyAttack([-4, 2], game, right);
-    new EnemyAttack([5, 1.5], game, left);
+    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, right);
+    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, left);
+
+    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
 }
 
 function shoot(event) {
     let shot = new Attack(event, game);
+}
+
+let position = 0
+let moveRight = false
+function update() {
+    if (position < -50) {
+        moveRight = true;
+    }
+
+    if (position > 50) {
+        moveRight = false;
+    }
+
+    if (position < 51 && moveRight) {
+        position += 1;
+        boss.style.left = boss.offsetLeft - 1;
+    }
+
+    if (position > -51 && !moveRight) {
+        position -= 1;
+        boss.style.left = boss.offsetLeft - 1;
+    }
 
 }
 
