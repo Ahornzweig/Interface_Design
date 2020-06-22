@@ -5,6 +5,11 @@ let left;
 let right;
 let boss;
 
+let phaseOne = false;
+let phaseTwo = false;
+let phaseThree = false;
+let canAttack = false;
+
 function main() {
 
     game = document.getElementById("game");
@@ -13,7 +18,7 @@ function main() {
     player = document.getElementById("player");
     boss = document.getElementById("boss");
 
-    console.log(boss.getBoundingClientRect(),boss.offsetLeft)
+    console.log(boss.getBoundingClientRect(), boss.offsetLeft)
 
     window.addEventListener('mousemove', function (e) {
 
@@ -25,11 +30,18 @@ function main() {
 
     });
 
-    document.addEventListener("click", shoot)
+    document.addEventListener("click", shoot);
 
-    setInterval(attackPlayer, 2000)
+    setInterval(attackPlayer, 2000);
+
+    setTimeout(function () { phaseOne = true }, 7000);
+    setTimeout(function () { phaseTwo = true }, 17000);
+    setTimeout(function () { phaseThree = true }, 27000);
 
     window.requestAnimationFrame(update);
+
+    setTimeout(function () { canAttack = true }, 5000);
+    document.querySelector('#core-charged').classList.toggle('change');
 }
 
 function attackPlayer() {
@@ -39,36 +51,67 @@ function attackPlayer() {
     new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
     new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
 
-    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
-    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+    if (phaseOne) {
 
-    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
-    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+    }
+
+    if (phaseTwo) {
+
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+    }
+
+    if (phaseThree) {
+
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+    }
 }
 
 function shoot(event) {
-    let shot = new Attack(event, game);
+    if (canAttack) {
+        canAttack = false;
+        document.querySelector('#core-charged').classList.remove('change');
+        let shot = new Attack(event, game);
+
+        setTimeout(function () { document.querySelector('#core-charged').classList.add('change') }, 1000);
+        setTimeout(function () { canAttack = true }, 5000);
+    }
 }
 
-let position = 20
+let position = 10
 let moveRight = false
 function update() {
 
-    if ( moveRight) {
-        position += 0.25;
-        boss.style.left = (boss.getBoundingClientRect().x + boss.getBoundingClientRect().width/2) + position+"px";
+    if (moveRight) {
+        position += 0.10;
+        boss.style.left = (boss.getBoundingClientRect().x + boss.getBoundingClientRect().width / 2) + position + "px";
     }
 
     if (!moveRight) {
-        position -= 0.25;
-        boss.style.left = (boss.getBoundingClientRect().x + boss.getBoundingClientRect().width/2) + position+"px";
+        position -= 0.10;
+        boss.style.left = (boss.getBoundingClientRect().x + boss.getBoundingClientRect().width / 2) + position + "px";
     }
 
-    if (position < -20) {
+    if (position < -10) {
         moveRight = true;
     }
 
-    if (position > 20) {
+    if (position > 10) {
         moveRight = false;
     }
 

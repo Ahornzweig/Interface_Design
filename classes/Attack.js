@@ -26,6 +26,9 @@ class Attack {
         let height = this.target.offsetHeight;
         if (this.position.x < (left + width / 2) && this.position.x > (left - width / 2) && this.position.y > (top + height) && this.position.y < (top + 2 * height)) {
             this.target.style.width = (width - 40) + "px";
+            this.target.style.backgroundColor = "rgb(99, 24, 46)";
+            let that = this;
+            setTimeout(function () { that.target.style.backgroundColor = "white"; }, 300);
             this.score = true;
             if (width - 40 == 0) {
                 alert("You won?");
