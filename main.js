@@ -42,6 +42,11 @@ function main() {
 
     setTimeout(function () { canAttack = true }, 5000);
     document.querySelector('#core-charged').classList.toggle('change');
+
+    let audio = document.getElementById("charge");
+    audio.loop = false;
+    audio.currentTime = 0;
+    audio.play();
 }
 
 function attackPlayer() {
@@ -88,8 +93,31 @@ function shoot(event) {
         document.querySelector('#core-charged').classList.remove('change');
         let shot = new Attack(event, game);
 
-        setTimeout(function () { document.querySelector('#core-charged').classList.add('change') }, 1000);
-        setTimeout(function () { canAttack = true }, 5000);
+        setTimeout(function () {
+            document.querySelector('#core-charged').classList.add('change')
+
+            let audio = document.getElementById("charge");
+            audio.loop = false;
+            audio.currentTime = 0.1;
+            audio.volume = 0;
+            audio.play();
+
+            var vol = 0.00;
+            var interval = 200;
+            var fadeout = setInterval(
+                function () {
+                    if (vol < 0.95) {
+                        vol += 0.05;
+                        audio.volume = vol;
+                    }
+                    else {
+                        clearInterval(fadeout);
+                    }
+                }, interval);
+
+        }, 500);
+
+        setTimeout(function () { canAttack = true }, 6500);
     }
 }
 

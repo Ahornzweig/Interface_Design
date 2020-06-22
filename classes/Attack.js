@@ -30,6 +30,10 @@ class Attack {
             let that = this;
             setTimeout(function () { that.target.style.backgroundColor = "white"; }, 300);
             this.score = true;
+            let audio = document.getElementById("between");
+            audio.loop = false;
+            audio.currentTime = 0;
+            audio.play();
             if (width - 40 == 0) {
                 alert("You won?");
                 location.reload();

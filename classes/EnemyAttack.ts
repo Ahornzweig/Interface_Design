@@ -39,6 +39,11 @@ class EnemyAttack {
                 this.core.parentNode.children[1].children[(counter - 1)].remove();
                 this.score = true;
 
+                let audio: HTMLAudioElement = <HTMLAudioElement>document.getElementById("in");
+                audio.loop = false;
+                audio.currentTime = 0;
+                audio.play();
+
             } else {
                 alert("game over");
                 location.reload();
