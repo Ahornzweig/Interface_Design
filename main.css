@@ -14,25 +14,24 @@ img {
 }
 
 #start-game{
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%);
-
-	background-color:rgb(99, 24, 46);
-	border-radius:30px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	padding:9px 23px;
-border: 1px solid rgb(99, 24, 46);
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color:white;
+    border-radius:30px;
+    display:inline-block;
+    cursor:pointer;
+    color:#111111;
+    font-family:Arial;
+    font-size:25px;
+    padding:9px 23px;
+    border: 1px solid white;
 }
 
 #start-game:hover {
-	background:rgb(124, 32, 60);
+    background:rgb(99, 24, 46);
+    border-color: rgb(99, 24, 46);
 }
 
 button:focus {outline:0;}
