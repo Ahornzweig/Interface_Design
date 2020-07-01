@@ -24,7 +24,7 @@ class EnemyAttack {
         let top = this.core.parentElement.offsetTop;
         let width = this.core.offsetWidth;
         let height = this.core.offsetHeight;
-        if (this.position.x < (left + width) && this.position.x > (left) && this.position.y > (top - height / 2) && this.position.y < (top + height / 2)) {
+        if (this.position.x < (left + width) && this.position.x > (left) && this.position.y > (top - height) && this.position.y < (top)) {
             let counter = this.core.parentNode.children[1].children.length;
             if (counter > 0) {
                 this.core.parentNode.children[1].children[(counter - 1)].remove();

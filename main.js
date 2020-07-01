@@ -18,8 +18,6 @@ function main() {
     player = document.getElementById("player");
     boss = document.getElementById("boss");
 
-    console.log(boss.getBoundingClientRect(), boss.offsetLeft)
-
     window.addEventListener('mousemove', function (e) {
 
         let left = (e.pageX - (player.offsetWidth / 2)) + "px";
@@ -29,6 +27,16 @@ function main() {
         player.style.top = top;
 
     });
+
+    let button = document.getElementById("start-game");
+
+    button.addEventListener("click", start)
+
+}
+
+function start() {
+    document.getElementById("start").style.display = "none";
+    document.getElementById("game").style.display = "block";
 
     document.addEventListener("click", shoot);
 
@@ -41,7 +49,31 @@ function main() {
     window.requestAnimationFrame(update);
 
     setTimeout(function () { canAttack = true }, 5000);
-    document.querySelector('#core-charged').classList.toggle('change');
+    
+    setTimeout(function () {
+        document.querySelector('#core-charged').classList.add('change')
+
+        let audio = document.getElementById("charge");
+        audio.loop = false;
+        audio.currentTime = 0.1;
+        audio.volume = 0;
+        audio.play();
+
+        var vol = 0.05;
+        var interval = 200;
+        var fadein = setInterval(
+            function () {
+                if (vol < 0.95) {
+                    vol += 0.10;
+                    audio.volume = vol;
+                }
+                else {
+                    vol += 0.05;
+                    clearInterval(fadein);
+                }
+            }, interval);
+
+    }, 50);
 
     let audio = document.getElementById("charge");
     audio.loop = false;

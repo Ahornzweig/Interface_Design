@@ -13,6 +13,34 @@ img {
     width: 100%;
 }
 
+#start-game{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%);
+
+	background-color:rgb(99, 24, 46);
+	border-radius:30px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:9px 23px;
+border: 1px solid rgb(99, 24, 46);
+
+}
+
+#start-game:hover {
+	background:rgb(124, 32, 60);
+}
+
+button:focus {outline:0;}
+
+#game{
+    display: none;
+}
+
 #player {
     width: 70px;
     height: 70px;
@@ -87,7 +115,7 @@ img {
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    background-color: rgb(204, 100, 131);;
+    background-color: rgb(204, 100, 131);
     position: absolute;
     transform: translate(-50%, -100%);
 }

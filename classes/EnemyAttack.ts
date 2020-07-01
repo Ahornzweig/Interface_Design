@@ -32,7 +32,7 @@ class EnemyAttack {
         let top: number = this.core.parentElement.offsetTop;
         let width: number = this.core.offsetWidth;
         let height: number = this.core.offsetHeight;
-        if (this.position.x < (left + width) && this.position.x > (left) && this.position.y > (top - height / 2) && this.position.y < (top + height / 2)) {
+        if (this.position.x < (left + width) && this.position.x > (left) && this.position.y > (top - height) && this.position.y < (top  )) {
             let counter: number = this.core.parentNode.children[1].children.length;
             if (counter > 0) {
 
