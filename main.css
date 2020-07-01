@@ -1,13 +1,12 @@
 * {
     box-sizing: border-box;
-    
-    cursor: none;
 }
 
 body {
-    background-color: black;
+    background-color: #111111;
     height: 100%;
     overflow: hidden;
+    cursor: none;
 }
 
 img {
@@ -18,6 +17,7 @@ img {
     width: 70px;
     height: 70px;
     position: absolute;
+    transform: translateY(-50%);
 }
 
 #core {
@@ -35,7 +35,7 @@ img {
   
 #core-charged.change {
     opacity: 1;
-    transition: all 6s ease-in;
+    transition: all 5s ease-in;
 }
 
 #lives{
@@ -58,7 +58,6 @@ img {
     top: 50px;
     left: 50%;
     transform: translate(-50%, 50%);
-    
     border-radius: 50px;
 }
 

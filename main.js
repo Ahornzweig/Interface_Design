@@ -34,9 +34,9 @@ function main() {
 
     setInterval(attackPlayer, 2000);
 
-    setTimeout(function () { phaseOne = true }, 7000);
-    setTimeout(function () { phaseTwo = true }, 17000);
-    setTimeout(function () { phaseThree = true }, 27000);
+    setTimeout(function () { phaseOne = true }, 10000);
+    setTimeout(function () { phaseTwo = true }, 25000);
+    setTimeout(function () { phaseThree = true }, 40000);
 
     window.requestAnimationFrame(update);
 
@@ -102,22 +102,23 @@ function shoot(event) {
             audio.volume = 0;
             audio.play();
 
-            var vol = 0.00;
+            var vol = 0.05;
             var interval = 200;
-            var fadeout = setInterval(
+            var fadein = setInterval(
                 function () {
                     if (vol < 0.95) {
-                        vol += 0.05;
+                        vol += 0.10;
                         audio.volume = vol;
                     }
                     else {
-                        clearInterval(fadeout);
+                        vol += 0.05;
+                        clearInterval(fadein);
                     }
                 }, interval);
 
-        }, 500);
+        }, 50);
 
-        setTimeout(function () { canAttack = true }, 6500);
+        setTimeout(function () { canAttack = true }, 6050);
     }
 }
 
