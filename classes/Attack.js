@@ -35,8 +35,8 @@ class Attack {
             audio.currentTime = 0;
             audio.play();
             if (width - 40 == 0) {
-                alert("You won?");
-                location.reload();
+                document.getElementById("win").style.display = "block";
+                document.getElementById("game").style.display = "none";
             }
         }
     }

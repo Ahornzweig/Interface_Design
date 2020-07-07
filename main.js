@@ -48,22 +48,22 @@ function start() {
 
     window.requestAnimationFrame(update);
 
-    setTimeout(function () { canAttack = true }, 5000);
+    setTimeout(function () { canAttack = true }, 4000);
     
     setTimeout(function () {
         document.querySelector('#core-charged').classList.add('change')
 
         let audio = document.getElementById("charge");
         audio.loop = false;
-        audio.currentTime = 0.1;
+        audio.currentTime = 2.5;
         audio.volume = 0;
-        audio.play();
+        audio.play(); 
 
         var vol = 0.05;
         var interval = 200;
         var fadein = setInterval(
             function () {
-                if (vol < 0.95) {
+                if (vol < 0.90) {
                     vol += 0.10;
                     audio.volume = vol;
                 }
@@ -130,7 +130,7 @@ function shoot(event) {
 
             let audio = document.getElementById("charge");
             audio.loop = false;
-            audio.currentTime = 0.1;
+            audio.currentTime = 2.5;
             audio.volume = 0;
             audio.play();
 
@@ -138,7 +138,7 @@ function shoot(event) {
             var interval = 200;
             var fadein = setInterval(
                 function () {
-                    if (vol < 0.95) {
+                    if (vol < 0.90) {
                         vol += 0.10;
                         audio.volume = vol;
                     }
@@ -150,7 +150,7 @@ function shoot(event) {
 
         }, 50);
 
-        setTimeout(function () { canAttack = true }, 6050);
+        setTimeout(function () { canAttack = true }, 4050);
     }
 }
 

@@ -35,8 +35,8 @@ class EnemyAttack {
                 audio.play();
             }
             else {
-                alert("game over");
-                location.reload();
+                document.getElementById("end").style.display = "block";
+                document.getElementById("game").style.display = "none";
             }
         }
     }

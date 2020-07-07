@@ -13,7 +13,7 @@ img {
     width: 100%;
 }
 
-#start-game{
+#start-game,#end-game,#win-game{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -22,16 +22,21 @@ img {
     border-radius:30px;
     display:inline-block;
     cursor:pointer;
-    color:#111111;
+    color:#000;
     font-family:Arial;
-    font-size:25px;
+    font-size:35px;
     padding:9px 23px;
     border: 1px solid white;
+    font-weight: bold;
 }
 
-#start-game:hover {
-    background:rgb(99, 24, 46);
-    border-color: rgb(99, 24, 46);
+#end,#win{
+display: none;
+}
+
+#start-game:hover,#end-game:hover,#win-game:hover  {
+    background:#39B54A;
+    border-color:#39B54A;
 }
 
 button:focus {outline:0;}
@@ -62,7 +67,7 @@ button:focus {outline:0;}
   
 #core-charged.change {
     opacity: 1;
-    transition: all 5s ease-in;
+    transition: all 4s ease-in;
 }
 
 #lives{
@@ -73,7 +78,7 @@ button:focus {outline:0;}
 #player .live {
     width: 70px;
     height: 5px;
-    background-color:white;
+    background-color:#39B54A;
     margin: 10px auto 0;
 }
 
@@ -114,7 +119,7 @@ button:focus {outline:0;}
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    background-color: rgb(204, 100, 131);
+    background-color: #39B54A;
     position: absolute;
     transform: translate(-50%, -100%);
 }
