@@ -18,7 +18,7 @@ class EnemyAttack {
         game.appendChild(this.shot);
 
         requestAnimationFrame(() => this.update());
-        setTimeout(this.del, 5000);
+        setTimeout(this.del, 6000);
     }
 
     del = () => {

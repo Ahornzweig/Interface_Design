@@ -17,7 +17,7 @@ class EnemyAttack {
         this.position = { "x": enemy.offsetLeft, "y": enemy.offsetTop };
         game.appendChild(this.shot);
         requestAnimationFrame(() => this.update());
-        setTimeout(this.del, 5000);
+        setTimeout(this.del, 6000);
     }
     hit() {
         let left = this.core.parentElement.offsetLeft;

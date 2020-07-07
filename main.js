@@ -40,7 +40,7 @@ function start() {
 
     document.addEventListener("click", shoot);
 
-    setInterval(attackPlayer, 2000);
+    setInterval(attackPlayer, 3000);
 
     setTimeout(function () { phaseOne = true }, 10000);
     setTimeout(function () { phaseTwo = true }, 25000);
@@ -82,6 +82,12 @@ function start() {
 }
 
 function attackPlayer() {
+
+    let audio = document.getElementById("in-between");
+    audio.loop = false;
+    audio.currentTime = 0;
+    audio.play();
+    
     new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, right);
     new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, left);
 
