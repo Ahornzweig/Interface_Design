@@ -27,7 +27,17 @@ class EnemyAttack {
         if (this.position.x < (left + width) && this.position.x > (left) && this.position.y > (top - height) && this.position.y < (top)) {
             let counter = this.core.parentNode.children[1].children.length;
             if (counter > 0) {
+                let lifes = document.querySelectorAll(".live");
                 this.core.parentNode.children[1].children[(counter - 1)].remove();
+                console.log(lifes);
+                for (let i = 0; i < lifes.length; i++) {
+                    lifes[i].style.backgroundColor = "rgb(99, 24, 46)";
+                }
+                setTimeout(function () {
+                    for (let i = 0; i < lifes.length; i++) {
+                        lifes[i].style.backgroundColor = "#39B54A";
+                    }
+                }, 500);
                 this.score = true;
                 let audio = document.getElementById("in");
                 audio.loop = false;

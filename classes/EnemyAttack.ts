@@ -36,7 +36,23 @@ class EnemyAttack {
             let counter: number = this.core.parentNode.children[1].children.length;
             if (counter > 0) {
 
+                let lifes: NodeListOf<HTMLDivElement> = <NodeListOf<HTMLDivElement>>document.querySelectorAll(".live");
+
                 this.core.parentNode.children[1].children[(counter - 1)].remove();
+
+                console.log(lifes);
+                for (let i: number = 0; i < lifes.length; i++) {
+
+                    lifes[i].style.backgroundColor = "rgb(99, 24, 46)";
+                }
+
+                setTimeout(function (): void {
+                    for (let i: number = 0; i < lifes.length; i++) {
+
+                        lifes[i].style.backgroundColor = "#39B54A";
+                    }
+                }, 500);
+
                 this.score = true;
 
                 let audio: HTMLAudioElement = <HTMLAudioElement>document.getElementById("in");
