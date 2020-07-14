@@ -61,6 +61,7 @@ class EnemyAttack {
                 audio.play();
 
             } else {
+            
                 document.getElementById("end").style.display = "block";
                 document.getElementById("game").style.display = "none";
 

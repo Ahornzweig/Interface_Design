@@ -34,25 +34,26 @@ function main() {
 
 }
 let intLeft;
+let intRight;
 
 function start() {
     document.getElementById("start").style.display = "none";
-    document.getElementById("game").style.display = "block";
+    game.style.display = "block";
 
     document.addEventListener("click", shoot);
 
     intLeft = setInterval(attackPlayer, 5000);
-    setTimeout(function () { intRight = setInterval(attackPlayerRight, 5000);}, 1500);
- 
+    setTimeout(function () { intRight = setInterval(attackPlayerRight, 5000); }, 1500);
+
 
     setTimeout(function () { phaseOne = true }, 10000);
-    setTimeout(function () { phaseTwo = true }, 25000);
-    setTimeout(function () { phaseThree = true }, 40000);
+    setTimeout(function () { phaseTwo = true }, 20000);
+    setTimeout(function () { phaseThree = true }, 35000);
 
     window.requestAnimationFrame(update);
 
     setTimeout(function () { canAttack = true }, 4000);
-    
+
     setTimeout(function () {
         document.querySelector('#core-charged').classList.add('change')
 
@@ -60,7 +61,7 @@ function start() {
         audio.loop = false;
         audio.currentTime = 2.5;
         audio.volume = 0;
-        audio.play(); 
+        audio.play();
 
         var vol = 0.05;
         var interval = 200;
@@ -86,82 +87,96 @@ function start() {
 
 function attackPlayerRight() {
 
-    let audio = document.getElementById("between-two");
-    audio.loop = false;
-    audio.currentTime = 0;
-    audio.play();
+    if (game.style.display == "block") {
 
-    right.style.animation="attackAnim 2s";
-    setTimeout(function () {right.style.animation="";}, 2000);
-    
-    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, right);
+        let audio = document.getElementById("between-two");
+        audio.loop = false;
+        audio.currentTime = 0;
+        audio.play();
 
-    new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        right.style.animation = "attackAnim 2s";
+        setTimeout(function () { right.style.animation = ""; }, 2000);
 
-    if (phaseOne) {
+        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, right);
 
         new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
 
-        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
-    }
+        if (phaseOne) {
 
-    if (phaseTwo) {
+            new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
 
-        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+            new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        }
 
-        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
-    }
+        if (phaseTwo) {
 
-    if (phaseThree) {
+            new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
 
-        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+            new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        }
 
-        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        if (phaseThree) {
 
-        new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+            new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+
+            new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+
+            new EnemyAttack([Math.floor(Math.random() * (-1 - (-5))) + (-5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, right);
+        }
+
+    } else {
+        clearInterval(intLeft)
     }
 }
 
 function attackPlayer() {
 
-    let audio = document.getElementById("in-two");
-    audio.loop = false;
-    audio.currentTime = 0;
-    audio.play();
+    if (game.style.display == "block") {
 
-    left.style.animation="attackAnimLeft 2s";
-    setTimeout(function () {left.style.animation="";}, 2000);
-    
-    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, left);
+        console.log("test");
 
-    new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+        let audio = document.getElementById("in-two");
+        audio.loop = false;
+        audio.currentTime = 0;
+        audio.play();
 
-    if (phaseOne) {
+        left.style.animation = "attackAnimLeft 2s";
+        setTimeout(function () { left.style.animation = ""; }, 2000);
 
-        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
-
-        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
-    }
-
-    if (phaseTwo) {
+        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (5 - (-5))) + (-5)], game, left);
 
         new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
 
-        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
-    }
+        if (phaseOne) {
 
-    if (phaseThree) {
+            new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
 
-        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+            new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+        }
 
-        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+        if (phaseTwo) {
 
-        new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+            new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+            new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+        }
+
+        if (phaseThree) {
+
+            new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+            new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+
+            new EnemyAttack([Math.floor(Math.random() * (5 - 1) + 5), Math.floor(Math.random() * (2 - (-5))) + (-5)], game, left);
+        }
+    } else {
+        clearInterval(intLeft)
     }
 }
 
 function shoot(event) {
-    if (canAttack) {
+    if (canAttack && game.style.display == "block") {
+        
         canAttack = false;
         document.querySelector('#core-charged').classList.remove('change');
         let shot = new Attack(event, game);
