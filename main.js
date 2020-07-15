@@ -53,7 +53,7 @@ function start() {
     window.requestAnimationFrame(update);
 
     setTimeout(function () { canAttack = true }, 3900);
-    document.querySelector('#core-charged').style.animation="attackChargre 3.9s forwards";
+    document.querySelector('#core-charged').style.animation="attackChargre 4s forwards";
 
     setTimeout(function () {
        
@@ -186,7 +186,7 @@ function shoot(event) {
         let shot = new Attack(event, game);
 
         setTimeout(function () {
-            document.querySelector('#core-charged').style.animation="attackChargre 3.9s forwards";
+            document.querySelector('#core-charged').style.animation="attackChargre 4s forwards";
 
             let audio = document.getElementById("charge");
             audio.loop = false;
@@ -210,7 +210,7 @@ function shoot(event) {
 
         }, 50);
 
-        setTimeout(function () { canAttack = true }, 4000);
+        setTimeout(function () { canAttack = true }, 3900);
     }
 }
 
