@@ -42,8 +42,8 @@ function start() {
 
     document.addEventListener("click", shoot);
 
-    //intLeft = setInterval(attackPlayer, 5000);
-    //setTimeout(function () { intRight = setInterval(attackPlayerRight, 5000); }, 1500);
+    intLeft = setInterval(attackPlayer, 5000);
+    setTimeout(function () { intRight = setInterval(attackPlayerRight, 5000); }, 1500);
 
 
     setTimeout(function () { phaseOne = true }, 10000);
