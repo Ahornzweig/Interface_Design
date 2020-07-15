@@ -52,11 +52,16 @@ function start() {
 
     window.requestAnimationFrame(update);
 
+    setTimeout(function () {
+        document.querySelector('#core').style.animation = "test 0.5s";
+        setTimeout(function () { document.querySelector('#core').style.animation = "" }, 1000);
+    }, 3300);
+
     setTimeout(function () { canAttack = true }, 3900);
-    document.querySelector('#core-charged').style.animation="attackChargre 4s forwards";
+    document.querySelector('#core-charged').style.animation = "attackChargre 4s forwards";
 
     setTimeout(function () {
-       
+
 
         let audio = document.getElementById("charge");
         audio.loop = false;
@@ -179,14 +184,14 @@ function attackPlayer() {
 
 function shoot(event) {
     if (canAttack && game.style.display == "block") {
-        
+
         canAttack = false;
-        
-        document.querySelector('#core-charged').style.animation="";
+
+        document.querySelector('#core-charged').style.animation = "";
         let shot = new Attack(event, game);
 
         setTimeout(function () {
-            document.querySelector('#core-charged').style.animation="attackChargre 4s forwards";
+            document.querySelector('#core-charged').style.animation = "attackChargre 4s forwards";
 
             let audio = document.getElementById("charge");
             audio.loop = false;
@@ -209,6 +214,11 @@ function shoot(event) {
                 }, interval);
 
         }, 50);
+
+        setTimeout(function () {
+            document.querySelector('#core').style.animation = "test 0.5s";
+            setTimeout(function () { document.querySelector('#core').style.animation = "" }, 1000);
+        }, 3300);
 
         setTimeout(function () { canAttack = true }, 3900);
     }
