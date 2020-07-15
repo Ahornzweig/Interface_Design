@@ -42,8 +42,8 @@ function start() {
 
     document.addEventListener("click", shoot);
 
-    intLeft = setInterval(attackPlayer, 5000);
-    setTimeout(function () { intRight = setInterval(attackPlayerRight, 5000); }, 1500);
+    //intLeft = setInterval(attackPlayer, 5000);
+    //setTimeout(function () { intRight = setInterval(attackPlayerRight, 5000); }, 1500);
 
 
     setTimeout(function () { phaseOne = true }, 10000);
@@ -52,14 +52,15 @@ function start() {
 
     window.requestAnimationFrame(update);
 
-    setTimeout(function () { canAttack = true }, 4000);
+    setTimeout(function () { canAttack = true }, 3900);
+    document.querySelector('#core-charged').style.animation="attackChargre 3.8s forwards";
 
     setTimeout(function () {
-        document.querySelector('#core-charged').classList.add('change')
+       
 
         let audio = document.getElementById("charge");
         audio.loop = false;
-        audio.currentTime = 2.5;
+        audio.currentTime = 0.1;
         audio.volume = 0;
         audio.play();
 
@@ -67,7 +68,7 @@ function start() {
         var interval = 200;
         var fadein = setInterval(
             function () {
-                if (vol < 0.90) {
+                if (vol < 0.70) {
                     vol += 0.10;
                     audio.volume = vol;
                 }
@@ -92,6 +93,7 @@ function attackPlayerRight() {
         let audio = document.getElementById("between-two");
         audio.loop = false;
         audio.currentTime = 0;
+        audio.volume = 1;
         audio.play();
 
         right.style.animation = "attackAnim 2s";
@@ -138,6 +140,7 @@ function attackPlayer() {
         let audio = document.getElementById("in-two");
         audio.loop = false;
         audio.currentTime = 0;
+        audio.volume = 1;
         audio.play();
 
         left.style.animation = "attackAnimLeft 2s";
@@ -178,15 +181,16 @@ function shoot(event) {
     if (canAttack && game.style.display == "block") {
         
         canAttack = false;
-        document.querySelector('#core-charged').classList.remove('change');
+        
+        document.querySelector('#core-charged').style.animation="";
         let shot = new Attack(event, game);
 
         setTimeout(function () {
-            document.querySelector('#core-charged').classList.add('change')
+            document.querySelector('#core-charged').style.animation="attackChargre 3.8s forwards";
 
             let audio = document.getElementById("charge");
             audio.loop = false;
-            audio.currentTime = 2.5;
+            audio.currentTime = 0.1;
             audio.volume = 0;
             audio.play();
 
@@ -206,7 +210,7 @@ function shoot(event) {
 
         }, 50);
 
-        setTimeout(function () { canAttack = true }, 4050);
+        setTimeout(function () { canAttack = true }, 4000);
     }
 }
 

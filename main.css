@@ -65,9 +65,9 @@ button:focus {outline:0;}
     opacity:0;
 }
   
-#core-charged.change {
-    opacity: 1;
-    transition: all 4s ease-in;
+#core-charged {
+    opacity: 0;
+    
 }
 
 #lives{
@@ -128,6 +128,13 @@ button:focus {outline:0;}
     background-color: rgb(99, 24, 46);
     transform: translate(-50%, 50%);
 }
+
+@keyframes attackChargre {
+    0% {opacity: 0; }
+    80% {opacity: 0.5;}
+    100% {opacity: 1;}
+  }
+
 
 @keyframes attackAnim {
     0% {width:100px; height:100px; background-color: white; }
