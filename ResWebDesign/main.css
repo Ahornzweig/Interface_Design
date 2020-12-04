@@ -52,7 +52,7 @@ main{
 #banner{
     height: CALC(100vh - 72px);
     width: 100%;
-    margin-bottom: 75px;
+    margin-bottom: 100px;
 }
 .banner-img{
     width: 100%;
@@ -89,7 +89,7 @@ main{
 
 .group-item{
     width: 45%;
-    height: 125px;
+    height: 650px;
     position: relative;
 }
 
@@ -101,7 +101,7 @@ main{
 .group-item .icon{
     height: 75px;
     position: absolute;
-    top: 10px;
+    top: 550px;
 }
 
 .group-item .icon img{
@@ -110,15 +110,23 @@ main{
 
 .group-item .title{
     position: absolute;
-    top: 0;
+    top: 550px;
     left: 150px;
+}
+
+.group-item .scale-img{
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
 }
 
 .group-item .img{
     width: 100%;
-    height: 250px;
+    height: 275px;
     background-size: cover;
-    margin-bottom: 25px;
 }
 
 h3{
@@ -129,7 +137,7 @@ h3{
     position: absolute;
     left: 150px;
     width: Calc(100% - 150px);
-    bottom: 0;
+    top: 600px;
 }
 
 .head{
@@ -147,7 +155,7 @@ p{
 
 .call{
     position: relative;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
     
 }
@@ -161,13 +169,11 @@ p{
     height: 100%;
     background-size: cover;
     background-position: center top;
-    transition: 10s;
+    transition: transform 10s linear;
 }
 
-.call:hover .scale{
-    width: 130%;
-    height:130%;
-    transform: translateX(-20%);
+.call:hover .scale, .scale-img:hover .scale{
+    transform: scale(1.4);
 }
 
 .call button{
