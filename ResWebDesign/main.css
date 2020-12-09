@@ -18,7 +18,7 @@
 
 body{
     margin: 0;
-    color: #1c1b1b;
+    
 }
 
 #header{
@@ -47,6 +47,7 @@ body{
 
 main{
     width: 100%;
+    color: #1c1b1b;
 }
 
 #banner{
@@ -65,8 +66,12 @@ main{
     padding: 0 12%;
     line-height: 1.7;
     letter-spacing: 0.1em;
-    margin-bottom: 150px;
+    margin-bottom: 125px;
     position: relative;
+}
+
+.content.smal{
+    padding: 0 22%;
 }
 
 .text{
@@ -81,6 +86,25 @@ main{
     font-size: 50px;
 }
 
+.call-banner{
+    background-color: #9b896b;
+    color: white;
+    text-align: center;
+}
+
+.call-banner h2{
+    padding-top: 20px;
+    font-size: 50px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.call-banner a{
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+}
+
 .group{
     display: flex;
     justify-content: space-between;
@@ -88,14 +112,22 @@ main{
 }
 
 .group-item{
-    width: 45%;
+    width: 48%;
     height: 650px;
     position: relative;
+}
+
+.group-item.three{
+    width: 31%;
+    position: relative;
+    height: auto;
+    cursor: pointer;
 }
 
 .group-item.big{
     width: 48.5%;
     height: 350px;
+    cursor: pointer;
 }
 
 .group-item .icon{
@@ -111,15 +143,15 @@ main{
 .group-item .title{
     position: absolute;
     top: 550px;
-    left: 150px;
+    left: 120px;
 }
 
 .group-item .scale-img{
     width: 100%;
     height: 500px;
     background-size: cover;
-    position: absolute;
-    top: 0;
+    /*position: absolute;
+    top: 0;*/
     overflow: hidden;
 }
 
@@ -128,6 +160,9 @@ main{
     height: 275px;
     background-size: cover;
 }
+.group-item.big .scale-img{
+    height: 275px;
+}
 
 h3{
     margin-top: 0;
@@ -135,7 +170,7 @@ h3{
 
 .group-item .text{
     position: absolute;
-    left: 150px;
+    left: 120px;
     width: Calc(100% - 150px);
     top: 600px;
 }
@@ -203,8 +238,15 @@ button:focus{
 #footer{
     background-color: #e3e5e3;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 100px;
+    color: #000;
+}
+
+#footer div{
+    width: 250px;
+    padding-bottom: 25px;
 }
 
 #footer li{
@@ -234,28 +276,45 @@ button:focus{
     background: #1c1b1b;
     transition: 0.5s;
     width: 0;
-  }
+}
 
-  #footer span:hover:after { 
+#footer span:hover:after { 
     width: 100%;
-  }
+}
 
-  ul{
-      margin: 0;
-      padding: 0;
-  }
+ul{
+    margin: 0;
+     padding: 0;
+}
 
   li{
     list-style: none;
       display: block;
   }
 
+  .social{
+      font-size: 25px;
+  }
+
+.social svg{
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+input{
+    background: transparent;
+    width: 100%;
+    display: block;
+    padding: 12px 14px;
+    border-radius: 0;
+    border: 1px solid #5d5a5a;;
+}
+
+input:focus{outline: none;}
+
 
 @media screen and (max-width: 1200px) {
-    .group-item{
-        width: 100%;
-        margin-bottom: 50px;
-    }
+   
 
     .group-item.big{
         width: 48.5%;
@@ -266,7 +325,7 @@ button:focus{
         margin-bottom: 0;
     }
 
-    .content{
+    .content,.content.smal{
         padding: 0 50px;
     }
 
@@ -280,17 +339,26 @@ button:focus{
   }
 
   @media screen and (max-width: 900px) {
-  
+    .group-item{
+        width: 100%;
+        margin-bottom: 100px;
+    }
+
     .group-item.big{
         width: 100%;
         margin-bottom: 50px;
     }
 
+    #footer{
+        padding: 50px;
+    }
+
   }
+
 
   @media screen and (max-width: 600px) {
   
-    .content{
+    .content, .content.smal{
         padding: 0 15px;
     }
 
