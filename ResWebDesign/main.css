@@ -99,10 +99,23 @@ main{
     cursor: pointer;
 }
 
-.call-banner a{
-  margin-bottom: 20px;
+.call-banner button{
   letter-spacing: 0.1em;
-  font-size: 14px;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.btn-sec{
+    border: 1px solid white;
+    color: white;
+    background-color: transparent;
+    padding: 10px 14px;
+}
+
+.btn-sec:hover{
+    border-color: white;
+    color: black;
+    background-color: white;
 }
 
 .group{
@@ -112,7 +125,7 @@ main{
 }
 
 .group-item{
-    width: 48%;
+    width: 48.5%;
     height: 650px;
     position: relative;
 }
@@ -313,14 +326,10 @@ input{
 input:focus{outline: none;}
 
 
+
+
 @media screen and (max-width: 1200px) {
    
-
-    .group-item.big{
-        width: 48.5%;
-        margin-bottom: 0;
-    }
-
     .group-item:last-child{
         margin-bottom: 0;
     }
@@ -344,6 +353,11 @@ input:focus{outline: none;}
         margin-bottom: 100px;
     }
 
+    .group-item.three{
+        width:48.5%;
+        margin-bottom: 30px;
+    }
+
     .group-item.big{
         width: 100%;
         margin-bottom: 50px;
@@ -362,6 +376,11 @@ input:focus{outline: none;}
         padding: 0 15px;
     }
 
+    .group-item.three{
+        width:100%;
+        margin-bottom: 30px;
+    }
+
     .group-item .icon{
         height: 55px;
     }
@@ -378,5 +397,31 @@ input:focus{outline: none;}
     .quote{
         font-size: 30px;
     }
+
+    #footer div{
+        width: 100%;
+    }
+
+    .collaps-toggle{
+        cursor: pointer;
+    }
+
+    .collaps-content {
+        display: none;
+        overflow: hidden;
+    }
+
+    .collaps-toggle:after {
+        content: '\002B';
+        font-size: 30px;
+        color: #1c1b1b;
+        float: right;
+        margin-left: 5px;
+        line-height: 50%;
+      }
+      
+      .active:after {
+        content: "\2212";
+      }
 
   }
