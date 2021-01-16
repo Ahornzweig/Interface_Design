@@ -70,6 +70,10 @@ main{
     position: relative;
 }
 
+.call-banner .content{
+    padding: 15px 12% 65px;
+}
+
 .content.smal{
     padding: 0 22%;
 }
@@ -102,7 +106,7 @@ main{
 .call-banner button{
   letter-spacing: 0.1em;
   font-size: 15px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .btn-sec{
@@ -355,7 +359,7 @@ input:focus{outline: none;}
 
     .group-item.three{
         width:48.5%;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
 
     .group-item.big{
@@ -378,7 +382,7 @@ input:focus{outline: none;}
 
     .group-item.three{
         width:100%;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
 
     .group-item .icon{
@@ -407,9 +411,17 @@ input:focus{outline: none;}
     }
 
     .collaps-content {
-        display: none;
+        max-height: 0;
         overflow: hidden;
+        transition: max-height .5s ease-in;
+        transition-delay: .1s;
+        padding: 0!important;
     }
+
+    .collaps-content.show {
+        max-height: 300px;
+    }
+
 
     .collaps-toggle:after {
         content: '\002B';
@@ -425,3 +437,10 @@ input:focus{outline: none;}
       }
 
   }
+
+  @media screen and (max-width: 500px) {
+    .group-item {
+        height:720px;
+    }
+  }
+
