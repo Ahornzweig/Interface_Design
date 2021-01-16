@@ -1,7 +1,7 @@
 
 function stickyChange() {
     let scroll = window.scrollY;
-    console.log(scroll);
+    //console.log(scroll);
     if(scroll>499){
         document.getElementById("header").classList="header-hidden";
     }else{
@@ -19,10 +19,10 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
+    if (content.classList.contains('show') == true) {
+      content.classList.remove('show');
     } else {
-      content.style.display = "block";
+      content.classList.add('show');
     }
   });
 }
