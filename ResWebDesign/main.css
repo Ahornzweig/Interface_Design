@@ -41,6 +41,11 @@ body{
     text-align: center;
 }
 
+#header a:hover{
+    cursor: pointer;
+}
+
+
 .header-hidden {
     transform: translateY(-100%);
 }
