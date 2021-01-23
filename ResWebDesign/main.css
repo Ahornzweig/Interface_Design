@@ -135,7 +135,7 @@ main{
 
 .group-item{
     width: 48.5%;
-    height: 650px;
+    height: 700px;
     position: relative;
 }
 
@@ -171,6 +171,15 @@ main{
 .group-item .scale-img{
     width: 100%;
     height: 500px;
+    background-size: cover;
+    /*position: absolute;
+    top: 0;*/
+    overflow: hidden;
+}
+
+.group-item.three .scale-img{
+    width: 100%;
+    height: 275px;
     background-size: cover;
     /*position: absolute;
     top: 0;*/
@@ -335,6 +344,15 @@ input{
 input:focus{outline: none;}
 
 
+@media screen and (max-width: 1500px) {
+
+    .group-item{
+        height: 750px;
+    }
+
+  }
+
+
 
 
 @media screen and (max-width: 1200px) {
@@ -352,14 +370,13 @@ input:focus{outline: none;}
         font-size: 40px;
     }
 
-   
-
   }
 
   @media screen and (max-width: 900px) {
     .group-item{
         width: 100%;
         margin-bottom: 100px;
+        height: 700px;
     }
 
     .group-item.three{
@@ -383,6 +400,10 @@ input:focus{outline: none;}
   
     .content, .content.smal{
         padding: 0 15px;
+    }
+
+    .group-item{
+        height: 725px;
     }
 
     .group-item.three{
@@ -445,7 +466,19 @@ input:focus{outline: none;}
 
   @media screen and (max-width: 500px) {
     .group-item {
-        height:720px;
+        height:750px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .group-item {
+        height:775px;
+    }
+  }
+
+  @media screen and (max-width: 300px) {
+    .group-item {
+        height:900px;
     }
   }
 
